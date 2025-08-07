@@ -12,7 +12,8 @@ import sys
 
 APPLICATION_FILES = [
     "Source/list.c",
-    "Source/main.c"
+    "Source/main.c",
+    "Source/time_server.c"
 ]
 APPLICATION_DEFINES = [
     "-D_GNU_SOURCE"

@@ -8,4 +8,4 @@
  * Function Prototype
  ****************************************************************************************************/
 
-extern void list_networkInterfaceInformation(void);
+extern void timeServer_start(void);

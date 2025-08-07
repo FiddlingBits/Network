@@ -3,7 +3,7 @@ all: Build/Network.exe
 	@echo Run: Build/Network.exe
 	@echo
 	@./Build/Network.exe
-Build/Network.exe: Build/ Build/list.o Build/main.o
+Build/Network.exe: Build/ Build/list.o Build/main.o Build/time_server.o
 	@echo Link: Network.exe
 	@clang Build/*.o -o Build/Network.exe
 Build/:
@@ -12,9 +12,12 @@ Build/:
 Build/list.o: Source/list.c Source/list.h
 	@echo Compile: list.c
 	@clang -D_GNU_SOURCE -std=c17 -Weverything -Wno-unsafe-buffer-usage -ISource -c Source/list.c -o $@
-Build/main.o: Source/main.c Source/list.h
+Build/main.o: Source/main.c Source/list.h Source/time_server.h
 	@echo Compile: main.c
 	@clang -D_GNU_SOURCE -std=c17 -Weverything -Wno-unsafe-buffer-usage -ISource -c Source/main.c -o $@
+Build/time_server.o: Source/time_server.c Source/time_server.h
+	@echo Compile: time_server.c
+	@clang -D_GNU_SOURCE -std=c17 -Weverything -Wno-unsafe-buffer-usage -ISource -c Source/time_server.c -o $@
 clean:
 	@echo Clean
 	@rm -fr Build

@@ -13,16 +13,16 @@
  * Function Prototype
  ****************************************************************************************************/
 
-static void list_helper(const struct ifaddrs * const Address);
+static void list_networkInterfaceInformationHelper(const struct ifaddrs * const Address);
 
 /****************************************************************************************************
  * Function Definition (Public)
  ****************************************************************************************************/
 
-/*** List ***/
-void list(void)
+/*** List Network Interface Information ***/
+void list_networkInterfaceInformation(void)
 {
-    /*** List ***/
+    /*** List Network Interface Information ***/
     /* Variable */
     struct ifaddrs *addresses;
 
@@ -33,10 +33,10 @@ void list(void)
         return;
     }
     
-    /* List Addresses */
+    /* List Network Interface Information */
     (void)printf("Name\tFamily\tIP Address\n");
     for(struct ifaddrs *address = addresses; address != NULL; address = address->ifa_next)
-        list_helper(address);
+        list_networkInterfaceInformationHelper(address);
     
     /* Clean Up */
     freeifaddrs(addresses);
@@ -46,10 +46,10 @@ void list(void)
  * Function Definition (Private)
  ****************************************************************************************************/
 
-/*** List Helper ***/
-static void list_helper(const struct ifaddrs * const Address)
+/*** List Network Interface Information Helper ***/
+static void list_networkInterfaceInformationHelper(const struct ifaddrs * const Address)
 {
-    /*** List Helper ***/
+    /*** List Network Interface Information Helper ***/
     /* Error Check */
     if(Address->ifa_addr)
     {
@@ -78,7 +78,7 @@ static void list_helper(const struct ifaddrs * const Address)
             return;
         }
         
-        /* Print */
+        /* Print Information */
         (void)printf("%s\t%s\t%s\n", Address->ifa_name, Family, ipAddress);
     }
 }
